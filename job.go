@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"net/url"
 	"path"
 	"strconv"
@@ -421,7 +422,11 @@ func (j *Job) InvokeSimple(params map[string]string) (int64, error) {
 	}
 
 	if resp.StatusCode != 200 && resp.StatusCode != 201 {
-		return 0, fmt.Errorf("could not invoke job %q: %s - Body is %v", j.GetName(), resp.Status, resp.Body)
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return 0, fmt.Errorf("failed to read body: %w", err)
+		}
+		return 0, fmt.Errorf("could not invoke job %q: %s - Body is %v", j.GetName(), resp.Status, string(body))
 	}
 
 	location := resp.Header.Get("Location")
