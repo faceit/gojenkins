@@ -1,12 +1,12 @@
-module github.com/faceit/gojenkins
+module go.efg-tech.gg/faceit/gojenkins
 
 go 1.17
 
-toolchain go1.23.5
+toolchain go1.24.0
 
 require (
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/net v0.34.0
+	golang.org/x/net v0.35.0
 )
 
 require (
