@@ -467,7 +467,7 @@ func (j *Jenkins) HasPlugin(name string) (*Plugin, error) {
 	return p.Contains(name), nil
 }
 
-//InstallPlugin with given version and name
+// InstallPlugin with given version and name
 func (j *Jenkins) InstallPlugin(name string, version string) error {
 	xml := fmt.Sprintf(`<jenkins><install plugin="%s@%s" /></jenkins>`, name, version)
 	resp, err := j.Requester.PostXML("/pluginManager/installNecessaryPlugins", xml, j.Raw, map[string]string{})
@@ -517,11 +517,13 @@ func (j *Jenkins) GetAllViews() ([]*View, error) {
 // First Parameter - name of the View
 // Second parameter - Type
 // Possible Types:
-// 		gojenkins.LIST_VIEW
-// 		gojenkins.NESTED_VIEW
-// 		gojenkins.MY_VIEW
-// 		gojenkins.DASHBOARD_VIEW
-// 		gojenkins.PIPELINE_VIEW
+//
+//	gojenkins.LIST_VIEW
+//	gojenkins.NESTED_VIEW
+//	gojenkins.MY_VIEW
+//	gojenkins.DASHBOARD_VIEW
+//	gojenkins.PIPELINE_VIEW
+//
 // Example: jenkins.CreateView("newView",gojenkins.LIST_VIEW)
 func (j *Jenkins) CreateView(name string, viewType string) (*View, error) {
 	view := &View{Jenkins: j, Raw: new(ViewResponse), Base: "/view/" + name}
