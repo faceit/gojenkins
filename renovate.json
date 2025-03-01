@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "gitlab>eslfaceitgroup/technology/general/renovate//efg/recommended"
+    "gitlab>eslfaceitgroup/technology/general/renovate//faceit/recommended"
   ]
 }
