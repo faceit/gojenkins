@@ -24,7 +24,7 @@ include:
   - component: $CI_SERVER_FQDN/eslfaceitgroup/technology/general/ci-component/go/full-pipeline@0
     inputs:
       # renovate: datasource=golang-version depName=go
-      go_version: "1.24.0"
+      go_version: "1.24.1"
       package: true
   # This component handles interactions with GitLab such as posting comments and Slack messages
   - component: $CI_SERVER_FQDN/eslfaceitgroup/technology/general/ci-component/gitlab/full-pipeline@0
